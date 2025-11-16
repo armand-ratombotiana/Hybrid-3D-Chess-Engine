@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.chess.client.ui.MainController" prefHeight="720.0" prefWidth="1280.0">
+
+    <!-- Top Menu Bar -->
+    <top>
+        <MenuBar>
+            <Menu text="Game">
+                <MenuItem text="New Game" onAction="#startNewGame"/>
+                <MenuItem text="Load Game"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="Exit"/>
+            </Menu>
+            <Menu text="Settings">
+                <MenuItem text="Graphics Quality"/>
+                <MenuItem text="Preferences"/>
+            </Menu>
+            <Menu text="Help">
+                <MenuItem text="About"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <!-- Center: OpenGL Render View -->
+    <center>
+        <StackPane>
+            <ImageView fx:id="renderView" preserveRatio="true" fitWidth="800" fitHeight="800">
+                <StackPane.margin>
+                    <Insets top="10" bottom="10" left="10" right="10"/>
+                </StackPane.margin>
+            </ImageView>
+        </StackPane>
+    </center>
+
+    <!-- Right: Control Panel -->
+    <right>
+        <VBox fx:id="controlPanel" spacing="10" prefWidth="300" style="-fx-padding: 15;">
+            <Label text="Game Mode" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+
+            <RadioButton fx:id="localModeRadio" text="Local (2 Players)"/>
+            <RadioButton fx:id="aiModeRadio" text="Play vs AI"/>
+            <RadioButton fx:id="onlineModeRadio" text="Online Multiplayer"/>
+
+            <Separator/>
+
+            <Label text="Server Connection" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <TextField fx:id="serverUrlField" promptText="http://localhost:8080"/>
+            <Button fx:id="connectButton" text="Connect" maxWidth="Infinity"/>
+
+            <Separator/>
+
+            <Button fx:id="newGameButton" text="New Game" maxWidth="Infinity" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+
+            <Separator/>
+
+            <Label text="Move History" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+            <TextArea fx:id="moveHistoryArea" editable="false" VBox.vgrow="ALWAYS" wrapText="true"/>
+
+            <Separator/>
+
+            <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 12;"/>
+        </VBox>
+    </right>
+
+</BorderPane>
